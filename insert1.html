@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping List</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <style>
+    .item { padding: 10px; background-color: #f2f2f2; margin: 5px; }
+  </style>
+</head>
+<body>
+
+<h2 id="mainTitle">Shopping List</h2>
+<ul id="list">
+  <li class="item">Apple</li>
+  <li class="item">Carrot</li>
+</ul>
+
+<input type="text" id="newItem" placeholder="Add new item">
+<button id="addBtn">Add</button>
+<button id="removeBtn">Remove Last</button>
+<button id="changeAttrBtn">Change Title Attribute</button>
+
+<script>
+  $(document).ready(function() {
+    // Add a new item
+    $('#addBtn').click(function() {
+      const itemText = $('#newItem').val();
+      if (itemText) {
+        $('#list').append('<li class="item">' + itemText + '</li>');
+        $('#newItem').val('');  // Clear the input
+      }
+    });
+
+    // Remove the last item
+    $('#removeBtn').click(function() {
+      $('#list li:last').remove();
+    });
+
+    // Change title attribute
+    $('#changeAttrBtn').click(function() {
+      $('#mainTitle').attr('title', 'This is your shopping list!');
+      alert('Title attribute updated!');
+    });
+  });
+</script>
+
+</body>
+</html>
