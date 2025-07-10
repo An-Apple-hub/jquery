@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Callback & Content Manipulation</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <style>
+    #message {
+      padding: 20px;
+      background-color: lightblue;
+      display: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h2 id="greeting">Hello, visitor!</h2>
+<input type="text" id="nameInput" placeholder="Enter your name">
+<button id="submitBtn">Submit</button>
+
+<div id="message">Welcome message will appear here.</div>
+
+<script>
+  $(document).ready(function() {
+    $('#submitBtn').click(function() {
+      let userName = $('#nameInput').val(); 
+      $('#greeting').text('Hi there, ' + userName + '!'); 
+
+      $('#message')
+        .html('<i>Welcome, ' + userName + '! Hope you enjoy this page.</i>') 
+        .fadeIn(1000, function() {
+                    console.log("Message is now visible.");
+
+        });
+    });
+  });
+</script>
+
+</body>
+</html>
