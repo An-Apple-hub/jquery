@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Animation and Chaining</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: purple;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+<button id="animateBtn">Animate Box</button>
+<div id="box"></div>
+
+<script>
+  $(document).ready(function() {
+    $('#animateBtn').click(function() {
+      $('#box')
+        .animate({ left: '300px' }, 20)
+        .animate({ height: '150px', opacity:1 }, 20)
+        .animate({ width: '350px', opacity: 1 }, 20)
+        .css('background-color', 'beige')
+        .slideUp(1000)
+        .slideDown(1000);
+    });
+  });
+</script>
+
+</body>
+</html>
