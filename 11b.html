@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Callback, Get and Set Content from User Input</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <style>
+    #contentBox {
+      width: 300px;
+      height: 150px;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 150px;
+      margin: 20px;
+      font-size: 18px;
+      border: 2px solid #ccc;
+    }
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>jQuery Callback, Get and Set Content from User Input</h2>
+  
+  <!-- Input field for user to type content -->
+  <input type="text" id="userInput" placeholder="Type something..." />
+  <button id="setContentBtn">Set Content</button>
+  <button id="getContentBtn">Get Content</button>
+  <button id="callbackBtn">Callback Example</button>
+
+  <!-- Div to display and manipulate content -->
+  <div id="contentBox">Original Content</div>
+
+  <script>
+    $(document).ready(function() {
+
+      // 1. Get and Set Content from User Input
+      $('#setContentBtn').click(function() {
+        var userInput = $('#userInput').val(); // Get the value from the input field
+        if (userInput) {
+          $('#contentBox').text(userInput); // Set the content of #contentBox to the user's input
+        } else {
+          alert('Please enter some text!'); // Alert if the input is empty
+        }
+      });
+
+      // 2. Get content from the #contentBox when "Get Content" button is clicked
+      $('#getContentBtn').click(function() {
+        var content = $('#contentBox').text(); // Get the current content
+        alert('Current Content: ' + content); // Alert showing the current content
+      });
+
+      // 3. jQuery Callback Example - Fade Out, Change Content, and Fade In
+      $('#callbackBtn').click(function() {
+        $('#contentBox')
+          .fadeOut(500, function() { // Fade out the box with a callback function
+            var userInput = $('#userInput').val(); // Get the value from the input field
+            if (userInput) {
+              $(this).text(userInput).fadeIn(500); // Change content after fadeOut, then fadeIn
+            } else {
+              alert('Please enter some text to update content after fade out!');
+              $(this).fadeIn(500); // Fade it back in if input is empty
+            }
+          });
+      });
+
+    });
+  </script>
+
+</body>
+</html>
